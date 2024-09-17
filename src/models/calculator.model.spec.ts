@@ -117,4 +117,20 @@ describe('CalculatorModel', (): void => {
   
   });
 
+  it('Should output "4" when inputted "1+1+1+1="', (): void => {
+
+    calculator.pressNumericKey(NumericKeys.ONE);
+    calculator.pressOperatorKey(OperatorKeys.PLUS);
+    calculator.pressNumericKey(NumericKeys.ONE);
+    calculator.pressOperatorKey(OperatorKeys.PLUS);
+    calculator.pressNumericKey(NumericKeys.ONE);
+    calculator.pressOperatorKey(OperatorKeys.PLUS);
+    calculator.pressNumericKey(NumericKeys.ONE);
+    calculator.pressActionKey(ActionKeys.EQUALS);
+    const displayValue: string = calculator.display();
+  
+    expect(displayValue).toEqual('1+1+1+1=4');
+  
+  });
+
 });
