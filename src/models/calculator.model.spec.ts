@@ -69,7 +69,7 @@ describe('CalculatorModel', (): void => {
   
   });
 
-  it('should display `9+8=` when the `9` key is pressed followed by the `+` key followed by the "8" followed by the "=" key', (): void => {
+  it('should display `9+8=17` when the `9` key is pressed followed by the `+` key followed by the "8" followed by the "=" key', (): void => {
 
     calculator.pressNumericKey(NumericKeys.NINE);
     calculator.pressOperatorKey(OperatorKeys.PLUS);
@@ -77,7 +77,7 @@ describe('CalculatorModel', (): void => {
     calculator.pressActionKey(ActionKeys.EQUALS);
     const displayValue: string = calculator.display();
   
-    expect(displayValue).toEqual('9+8=');
+    expect(displayValue).toEqual('9+8=17');
   
   });
 
@@ -101,6 +101,19 @@ describe('CalculatorModel', (): void => {
     const displayValue: string = calculator.display();
   
     expect(displayValue).toEqual('');
+  
+  });
+
+
+  it('Should output "2" when inputted "1+1="', (): void => {
+
+    calculator.pressNumericKey(NumericKeys.ONE);
+    calculator.pressOperatorKey(OperatorKeys.PLUS);
+    calculator.pressNumericKey(NumericKeys.ONE);
+    calculator.pressActionKey(ActionKeys.EQUALS);
+    const displayValue: string = calculator.display();
+  
+    expect(displayValue).toEqual('1+1=2');
   
   });
 
